@@ -8,7 +8,7 @@ module OmniAuth
     class Mhealth < OmniAuth::Strategies::OAuth2
       class NoAuthorizationCodeError < StandardError; end
 
-      DEFAULT_SCOPE = '/read/health/user/profile'
+      DEFAULT_SCOPE = '/read/health/user'
 
       option :client_options, {
         site: 'https://mhealth.att.com',
