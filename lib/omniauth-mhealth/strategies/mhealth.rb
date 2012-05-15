@@ -43,7 +43,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/v2/health/user').parsed || { }
+        @raw_info ||= access_token.get('https://api-mhealth.att.com/v2/health/user').parsed || { }
       end
 
       def authorize_params
