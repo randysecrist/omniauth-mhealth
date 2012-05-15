@@ -25,7 +25,7 @@ module OmniAuth
         param_name: 'access_token'
       }
 
-      option :authorize_options, [:scope, :display]
+      option :authorize_options, [:scope]
 
       uid { raw_info['email']['value'] }
 
@@ -44,6 +44,12 @@ module OmniAuth
 
       def raw_info
         @raw_info ||= access_token.get('/v2/health/user').parsed || { }
+      end
+
+      def authorize_params
+        super.tap do |params|
+          params[:scope] ||= DEFAULT_SCOPE
+        end
       end
 
       def build_access_token
