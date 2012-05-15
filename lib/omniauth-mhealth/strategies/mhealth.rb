@@ -22,7 +22,7 @@ module OmniAuth
 
       option :access_token_options, {
         header_format: 'OAuth %s',
-        param_name: 'access_token'
+        param_name: 'oauth_token'
       }
 
       option :authorize_options, [:scope]
