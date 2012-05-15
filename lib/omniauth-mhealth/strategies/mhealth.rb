@@ -62,7 +62,7 @@ module OmniAuth
         auth = "Basic #{Base64.encode64([options.client_id, options.client_secret].join(':')).gsub("\n", '')}"
         resp = token_client.post('/access_token.json', post_params, 'Authorization'=>auth)
         decoded = MultiJson.decode resp.body
-        self.access_token = ::OAuth2::AccessToken.from_hash client, decoded, access_token_options
+        self.access_token = ::OAuth2::AccessToken.from_hash client, decoded.merge(access_token_options)
       end
 
       private
