@@ -27,6 +27,8 @@ module OmniAuth
 
       option :authorize_options, [:scope]
 
+      option :api_site, 'https://api-mhealth.att.com/'
+
       uid { raw_info['email']['value'] }
 
       info do
@@ -43,7 +45,8 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('https://api-mhealth.att.com/v2/health/user').parsed || { }
+        url = options.api_site + 'v2/health/user'
+        @raw_info ||= access_token.get(url).parsed || { }
       end
 
       def authorize_params
