@@ -2,8 +2,8 @@
 require File.expand_path('../lib/omniauth-mhealth/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Bryce Kerley"]
-  gem.email         = ["bkerley@brycekerley.net"]
+  gem.authors       = ["Bryce Kerley", "Randy Secrist"]
+  gem.email         = ["bkerley@brycekerley.net", "randy.secrist@gmail.com"]
   gem.description   = %q{OmniAuth plugin for AT&T mHealth}
   gem.summary       = %q{OmniAuth plugin for AT&T mHealth}
   gem.homepage      = "https://mhealth.att.com/hack"
