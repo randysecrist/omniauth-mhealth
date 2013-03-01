@@ -56,7 +56,8 @@ module OmniAuth
       end
 
       def build_access_token
-        token_client = Faraday.new url: options.client_options[:site]
+        ssl_options = options.client_options[:ssl].to_hash.symbolize_keys rescue {}
+        token_client = Faraday.new url: options.client_options[:site], ssl: ssl_options
         post_params = {
           grant_type: 'authorization_code',
           code: request.params['code'],
