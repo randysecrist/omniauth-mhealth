@@ -1,6 +1,8 @@
 # Omniauth::Mhealth
 
-TODO: Write a gem description
+This is the official OmniAuth strategy for authenticating to AT&T mHealth.  To
+use it, you'll need to sign up for an OAuth2 Application ID and Secret on the
+[AT&T MHealth Applications Page](https://mhealth.att.com/dev/apps/new).
 
 ## Installation
 
