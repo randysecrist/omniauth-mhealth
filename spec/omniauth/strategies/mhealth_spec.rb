@@ -42,4 +42,18 @@ describe OmniAuth::Strategies::Mhealth do
       subject.options.api_site.should eq("https://api-mhealth.att.com/")
     end
   end
+
+  context "#name" do
+    it 'should return name from raw_info if available' do
+      subject.stub!(:raw_info).and_return({'name' => {'value' => 'Jane Doe'}})
+      subject.name.should eq('Jane Doe')
+    end
+  end
+
+  context "#email" do
+    it 'should return email from raw_info if available' do
+      subject.stub!(:raw_info).and_return({'email' => {'value' => 'someone@example.com'}})
+      subject.email.should eq('someone@example.com')
+    end
+  end
 end

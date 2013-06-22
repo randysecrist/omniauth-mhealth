@@ -29,13 +29,13 @@ module OmniAuth
 
       option :api_site, 'https://api-mhealth.att.com/'
 
-      uid { raw_info['email']['value'] }
+      uid { email }
 
       info do
         prune!({
-                 'email'=> raw_info['email']['value'],
-                 'name'=> raw_info['name']['value'],
-               })
+          'name'=> name,
+          'email'=> email,
+        })
       end
 
       extra do
@@ -47,6 +47,16 @@ module OmniAuth
       def raw_info
         url = options.api_site + 'v2/health/user'
         @raw_info ||= access_token.get(url).parsed || { }
+      end
+
+      def name
+        key = raw_info['name'] unless (raw_info['name'].nil? || raw_info['name'].empty?)
+        key['value'] unless (key.nil? || key.empty?)
+      end
+
+      def email
+        key = raw_info['email'] unless (raw_info['email'].nil? || raw_info['email'].empty?)
+        key['value'] unless (key.nil? || key.empty?)
       end
 
       def authorize_params
